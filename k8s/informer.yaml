@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: informer
+  namespace: kinf
+spec:
+  selector:
+    matchLabels:
+      app: informer
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: informer
+    spec:
+      terminationGracePeriodSeconds: 0
+      serviceAccountName: informer-service-account
+      containers:
+      - name: informer
+        image: wdalmut/informer
+        env:
+          - name: REDIS_HOST
+            value: "queue-service"
+          - name: ADD_QUEUE_NAME
+            value: 'add-pods'
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "128m"
+          limits:
+            memory: "128Mi"
+            cpu: "128m"
+

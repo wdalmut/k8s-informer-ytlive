@@ -1,0 +1,19 @@
+apiVersion: skaffold/v1
+kind: Config
+metadata:
+  name: informer
+build:
+  artifacts:
+  - image: wdalmut/informer
+    context: src/informer
+    docker:
+      dockerfile: Dockerfile
+  - image: wdalmut/consumer
+    context: src/consumer
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - k8s/namespace.yaml
+    - k8s/*

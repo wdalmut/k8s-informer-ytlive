@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: queue
+  namespace: kinf
+spec:
+  selector:
+    matchLabels:
+      app: queue
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: queue
+    spec:
+      terminationGracePeriodSeconds: 0
+      containers:
+      - name: redis
+        image: redis:5
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "128m"
+          limits:
+            memory: "128Mi"
+            cpu: "128m"

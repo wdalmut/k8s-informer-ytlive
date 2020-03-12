@@ -1,0 +1,18 @@
+{
+  "name": "k8s-informer-consumer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@kubernetes/client-node": "^0.11.1",
+    "redis": "^2.0.8",
+    "bluebird": "^3.7.2"
+  }
+}
+
+
